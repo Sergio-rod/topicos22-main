@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -80,5 +81,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function show_test(Request $request){
+        $user = User::limit(3)->get();
+        $user = User::where('name',$request->name)->get();
+        //$user = User::where('email', $request->email)->get();
+        return $user;
     }
 }
